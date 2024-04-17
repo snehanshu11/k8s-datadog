@@ -1,4 +1,12 @@
+
 Install datadog agent using helm chart
+```
+eksctl get cluster
+ eksctl utils write-kubeconfig --cluster=<name>
+ kubectl config current-context 
+ eksctl create cluster --name kube-cluster --nodegroup-name ng-default --version 1.28 --node-type t2.micro --nodes 6 --region us-west-2
+```
+
 ```
 helm version
 helm repo add datadog https://helm.datadoghq.com
@@ -93,4 +101,7 @@ kubectl get pods \
    -l app=datadog-agent-cluster-agent \
    -o name \
    ) -- agent status
+```
+```
+eksctl delete cluster --name=kube-cluster --region=us-west-2
 ```
